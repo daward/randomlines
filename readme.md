@@ -46,4 +46,7 @@ Our Wo keeps increasing for each increase in population size. Why is this? Becau
 
 The wait times appear to be adjusting to ensure only 7% of kids switch lines as a limit, but I cannot explain why.
 
+### Conclusion for the random wait method
+This method convincingly beats the control method. Even if picking a non optimal W, results are usually better than the control. However, when setting W = Wo, the results are incredibly good. In small systems (100 kids) the results are 5x better than the control group, but as the population size gets larger the distributed method continues to scale better. At 2000 kids, the distributed method is 30 times more efficient.
+
 
