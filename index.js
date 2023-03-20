@@ -34,7 +34,7 @@ const initialize = () => {
 }
 
 const run = () => {
-  
+
   let totalRuns = 0;
   const numRuns = 200
   for (let x = 0; x < numRuns; x++) {
@@ -57,8 +57,22 @@ const run = () => {
   return totalRuns / numRuns;
 }
 
-for (let i = 100; i < 3000; i+=100) {
-  settings.waitTime = 75;
-  settings.numberOfWalkers = i
-  console.log(`${run()}`);
+for (let walkerSize = 2000; walkerSize <= 2000; walkerSize += 100) {
+  let minCyclesPerWalker = 5;
+  let minWaitTime = 600;
+  let minTime = 100000;
+
+  for (let waitTime = 500; waitTime <= 1000; waitTime += 10) {
+    settings.waitTime = waitTime;
+    settings.numberOfWalkers = walkerSize;
+    const timeTaken = run();
+    const cyclesPerWalker = timeTaken / walkerSize;
+
+    if(cyclesPerWalker < minCyclesPerWalker) {
+      minCyclesPerWalker = cyclesPerWalker;
+      minWaitTime = waitTime
+      minTime = timeTaken;
+    }
+  }
+  console.log(`${minWaitTime}, ${minCyclesPerWalker}`)
 }
